@@ -13,4 +13,18 @@
 //= require jquery
 //= require jquery_ujs
 //= require turbolinks
+//= require jquery.1.10.2.min
+//= require jquery.ui.core.1.10.3.min
+//= require jquery.ui.widget.1.10.3.min
+//= require jquery.ui.mouse.1.10.3.min
+//= require jquery.ui.draggable.1.10.3.min
+//= require wColorPicker.min
+//= require wPaint.utils
+//= require wPaint
+//= require fillArea.min
+//= require wPaint.menu.main
+//= require shapes.min
+//= require wPaint.menu.main.shapes
+//= require wPaint.menu.main.file
 //= require_tree .
+

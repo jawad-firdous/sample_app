@@ -1,4 +1,4 @@
-<%= provide(:title, 'About Us') %>
+<!--<%= provide(:title, 'About Us') %>
 
 <h1>About Us</h1>
 <p>
@@ -8,3 +8,104 @@
   is the sample application for the tutorial.
 </p>
 
+-->
+ 
+ <h2>Tiger</h2>
+ <div id="wPaint-demo1" style="position:relative; background-color:#7a7a7a;">
+ <img id="myimg" border="0" src="/assets/tux.png">
+</div>
+<script type="text/javascript">
+var img = new Image();
+	$(document).ready(function(){
+		$("#wPaint-demo1").width($("#myimg").width());		
+		$("#wPaint-demo1").height($("#myimg").height());		
+		
+		$('#wPaint-demo1').wPaint({
+	      menuOffsetLeft: -35,
+	      menuOffsetTop: -50,
+	      saveImg: saveImg,
+	      loadImgBg: loadImgBg,
+	      loadImgFg: loadImgFg,
+	      onShapeDown: createCallback('onShapeDown'),
+	      onShapeUp: createCallback('onShapeUp'),
+	      onShapeMove: createCallback('onShapeDMove')
+	    });
+	});
+	
+	img.src = $("#wPaint-demo1").attr('src');
+</script>
+  
+
+  <script type="text/javascript">
+	
+    var images = [
+      '/test/uploads/wPaint.png',
+    ];
+
+    function saveImg(image) {
+      var _this = this;
+      image = image.split(",")[1];
+      console.log(image);
+
+      var img = $("<img/>");
+      img.attr("src", image);
+      $("body").append(img);
+      
+      $.ajax({
+        type: 'POST',
+        url: '/static_pages/upload',
+        data: {image: image},
+        success: function (resp) {
+
+          // internal function for displaying status messages in the canvas
+          _this._displayStatus('Image saved successfully');
+
+          // doesn't have to be json, can be anything
+          // returned from server after upload as long
+          // as it contains the path to the image url
+          // or a base64 encoded png, either will work
+          //resp = $.parseJSON(resp);
+
+          // update images array / object or whatever
+          // is being used to keep track of the images
+          // can store path or base64 here (but path is better since it's much smaller)
+          //images.push(resp.img);
+
+          // do something with the image
+          //$('body').append($('<img/>').attr('src', image));
+        }
+      });
+    }
+
+    function loadImgBg () 
+    {
+
+      // internal function for displaying background images modal
+      // where images is an array of images (base64 or url path)
+      // NOTE: that if you can't see the bg image changing it's probably
+      // becasue the foregroud image is not transparent.
+      this._showFileModal('bg', images);
+    }
+
+    function loadImgFg () 
+    {
+
+      // internal function for displaying foreground images modal
+      // where images is an array of images (base64 or url path)
+      this._showFileModal('fg', images);
+    }
+
+    function createCallback(cbName)
+    {
+      return function()
+      {
+        if (console)
+        {
+          console.log(cbName, arguments);
+        }
+      }
+    }
+
+    // init wPaint
+    
+  </script>
