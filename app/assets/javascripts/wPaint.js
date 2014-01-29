@@ -119,10 +119,26 @@
       // initialize active menu button
       this.menus.primary._getIcon(this.options.mode).trigger('click');      
     },
+    getImage: function (withBg) {
+      var canvasSave = document.createElement('canvas'),
+          ctxSave = canvasSave.getContext('2d');
 
+      withBg = withBg === false ? false : true;
+
+      $(canvasSave)
+      .css({display: 'none', position: 'absolute', left: 0, top: 0})
+      .attr('width', this.width)
+      .attr('height', this.height);
+
+      if (withBg) { ctxSave.drawImage(this.canvasBg, 0, 0); }
+      ctxSave.drawImage(this.canvas, 0, 0);
+
+      return canvasSave.toDataURL();
+    },
     resize: function () {
       var bg = this.getBg(),
           image = this.getImage();
+          
 
       this.width = this.$el.width();
       this.height = this.$el.height();
@@ -233,22 +249,7 @@
       this.$el.css('cursor', 'url("' + this.options.path + cursor.path + '") ' + cursor.left + ' ' + cursor.top + ', default');
     },
 
-    getImage: function (withBg) {
-      var canvasSave = document.createElement('canvas'),
-          ctxSave = canvasSave.getContext('2d');
-
-      withBg = withBg === false ? false : true;
-
-      $(canvasSave)
-      .css({display: 'none', position: 'absolute', left: 0, top: 0})
-      .attr('width', this.width)
-      .attr('height', this.height);
-
-      if (withBg) { ctxSave.drawImage(this.canvasBg, 0, 0); }
-      ctxSave.drawImage(this.canvas, 0, 0);
-
-      return canvasSave.toDataURL();
-    },
+    
 
     getBg: function () {
       return this.canvasBg.toDataURL();
@@ -616,7 +617,7 @@
      ************************************/
     _createHandle: function () {
       var _this = this,
-          $handle = $('<div class="wPaint-menu-handle"></div>');
+          $handle = $('<div class="wPaint-menu-handle"><img src="/assets/move_icon.png" style="padding:10px 10px 10px 10px;height:40%;width:40%;}"></div>');
 
       // draggable functions
       function draggableStart() {

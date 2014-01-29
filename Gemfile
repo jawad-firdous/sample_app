@@ -5,6 +5,7 @@ ruby '2.0.0'
 # Bundle edge Rails instead: gem 'rails', github: 'rails/rails'
 gem 'rails', '4.0.1'
 
+gem 'bootstrap-sass', '2.3.2.0'
 
 # Use sqlite3 as the database for Active Record
 group :development, :test do
@@ -17,7 +18,7 @@ group :test do
   gem 'capybara', '2.1.0'
 end
 
-gem 'sass-rails',   '4.0.0'
+gem 'sass-rails'#,   '4.0.0'
 
 gem 'uglifier', '2.1.1'
 
@@ -45,6 +46,7 @@ group :production do
   gem 'rails_12factor', '0.0.2'
 end
 
+gem "rmagick", "~> 2.13.2"
 # Use ActiveModel has_secure_password
 # gem 'bcrypt-ruby', '~> 3.1.2'
 

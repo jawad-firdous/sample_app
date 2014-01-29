@@ -1,6 +1,8 @@
 (function ($) {
   var img = '../assets/icons-menu-main-file.png';
 
+  //var img = '';
+
   // extend menu
   $.extend(true, $.fn.wPaint.menus.main.items, {
     save: {
@@ -9,6 +11,7 @@
       img: img,
       index: 0,
       callback: function () {
+        //alert("sjhfgayjfasuyfdasdk");
         this.options.saveImg.apply(this, [this.getImage()]);
       }
     },
@@ -45,7 +48,7 @@
   $.fn.wPaint.extend({
     _showFileModal: function (type, images) {
       var _this = this,
-          $content = $('<div></div>'),
+          $content = $('<div>   </div>'),
           $img = null;
 
       function appendContent(type, image) {

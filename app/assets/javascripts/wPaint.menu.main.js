@@ -100,8 +100,8 @@
   $.extend($.fn.wPaint.defaults, {
     mode:        'pencil',  // set mode
     lineWidth:   '3',       // starting line width
-    fillStyle:   '#FFFFFF', // starting fill style
-    strokeStyle: '#FFFF00'  // start stroke style
+    fillStyle:   'transparent', // starting fill style
+    strokeStyle: '#FF0000'  // start stroke style
   });
 
   // extend functions
